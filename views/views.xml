@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <record model="ir.ui.view" id="grower_plant_view_form">
+                <field name="name">grower.plant.view.form</field>
+                <field name="model">grower.planta</field>
+                <field name="arch" type="xml">
+                        <form string="Plant">
+                                <sheet>
+                                        <h1>
+                                                <field name="name" placeholder="Planta"/>
+                                        </h1>
+                                       <notebook>
+                                                <page string="Ventas">
+                                                        <group>
+                                                               <field name="price" string="Precio"/>
+                                                               <field name="total_sales"/>
+                                                        </group>
+                                                </page>
+                                                <page string="Pedidos">
+                                                        <group>
+                                                                <field name="pedido_ids">
+                                                                        <tree editable="bottom">
+                                                                                <field name="partner_id" domain="[('customer_rank','!=',0)]" 
+                                                                                             options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"/>
+                                                                                <field name="qty" />
+                                                                                <field name="amount_total" />
+                                                                        </tree>
+                                                                </field>
+                                                        </group>
+                                                </page>
+                                        </notebook>
+                                </sheet>
+                        </form>
+                </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="grower_plant_view_tree">
+                <field name="name">grower.plant.view.tree</field>
+                <field name="model">grower.planta</field>
+                <field name="arch" type="xml">
+                        <tree string="Planta" >
+                                 <field name="name" string="Nombre" />
+                                 <field name="code" string="Codigo" />
+                                 <field name="price" string="Precio" />
+                                 <field name="total_sales"/>
+                        </tree>
+                </field>
+        </record>
+
+        <record model="ir.ui.view" id="grower_plant_view_search">
+                <field name="name">grower.plant.view.seach</field>
+                <field name="model">grower.planta</field>
+                <field name="arch" type="xml">
+                        <search string="Planta" >
+                                 <field name="name" string="Nombre" />
+                                 <field name="price" string="Precio" />
+                                 <field name="total_sales"/>
+                        </search>
+                </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="action_grower_plant">
+                <field name="name">Plantas</field>
+                <field name="res_model">grower.planta</field>
+                <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Grower" id="grower_root_menu" />
+
+        <menuitem name="Plantas" id="grower_plant_menu"
+                parent="grower_root_menu"
+                action="action_grower_plant"
+                sequence="1"/>
+
+</odoo>

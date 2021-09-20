@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <template id="show_rescue_welcome">
+                <h2>Bienvenidos a Rescue IT!!!!</h2>
+                <h3>Bienvenido <span t-esc="usuario"></span></h3>
+                <div t-if="invoice">
+                        <h3>Nombre factura <span t-esc="invoice.name"></span> - Monto total <span t-esc="invoice.amount_total"></span></h3>
+                </div>
+        </template>
+                
+</odoo>   
